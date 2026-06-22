@@ -1,2 +1,511 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<% solutions = [
+  {
+    icon: '<i class="fa-solid fa-laptop-code"></i>',
+    title: "Desenvolvimento web",
+    description: "Criamos sites institucionais, landing pages e aplicações web pensadas para fortalecer presença digital, comunicação e conversão."
+  },
+  {
+    icon: '<i class="fa-solid fa-gears"></i>',
+    title: "Automações inteligentes",
+    description: "Estruturamos automações para reduzir tarefas repetitivas, melhorar fluxos internos e liberar tempo para o que realmente importa no negócio."
+  },
+  {
+    icon: '<i class="fa-solid fa-link"></i>',
+    title: "Integração entre sistemas",
+    description: "Conectamos ferramentas, APIs, CRMs, planilhas e plataformas para manter processos mais organizados e dados mais acessíveis."
+  },
+  {
+    icon: '<i class="fa-solid fa-robot"></i>',
+    title: "Agentes de IA",
+    description: "Desenvolvemos soluções com inteligência artificial para atendimento, qualificação, suporte, automação de respostas e ganho de produtividade."
+  },
+  {
+    icon: '<i class="fa-solid fa-cloud"></i>',
+    title: "Infraestrutura digital",
+    description: "Cuidamos da base técnica do seu projeto com foco em estabilidade, segurança, escalabilidade e organização do ambiente digital."
+  },
+  {
+    icon: '<i class="fa-solid fa-chart-line"></i>',
+    title: "Escala e evolução digital",
+    description: "Ajudamos empresas a evoluírem digitalmente com soluções que acompanham o crescimento da operação e apoiam decisões mais estratégicas."
+  }
+] %>
+
+<% stack_items = [
+  {
+    title: "Automação e orquestração",
+    description: "Construção de fluxos automatizados, webhooks, integração entre ferramentas e otimização de processos.",
+    examples: "n8n, APIs, Webhooks"
+  },
+  {
+    title: "Desenvolvimento web",
+    description: "Criação de páginas institucionais, landing pages, sistemas internos e aplicações modernas para web.",
+    examples: "Ruby on Rails, HTML, CSS e JavaScript"
+  },
+  {
+    title: "Inteligência artificial",
+    description: "Aplicação de IA para atendimento, produtividade, triagem, qualificação e automação de interações.",
+    examples: "Agentes, IA generativa e fluxos"
+  },
+  {
+    title: "Banco de dados e organização",
+    description: "Estruturação de dados, consultas, armazenamento e integração de informações operacionais.",
+    examples: "PostgreSQL, planilhas, CRM"
+  },
+  {
+    title: "Infraestrutura e deploy",
+    description: "Preparação de ambientes para colocar soluções no ar com segurança, performance e estabilidade.",
+    examples: "Docker, Traefik, VPS, SSL"
+  },
+  {
+    title: "Canais e ecossistema digital",
+    description: "Integração entre ferramentas de atendimento, comunicação, operação e presença digital.",
+    examples: "Google Workspace, Meta, WhatsApp"
+  }
+] %>
+
+<% blog_posts = [
+  {
+    title: "Como reduzir tarefas manuais e ganhar produtividade com automação",
+    excerpt: "Entenda como fluxos automatizados ajudam empresas a economizar tempo, evitar retrabalho e organizar melhor suas operações.",
+    reading_time: "5 min de leitura"
+  },
+  {
+    title: "Por que a estrutura digital da sua empresa influencia no crescimento",
+    excerpt: "Veja como uma boa base técnica impacta desempenho, segurança, escalabilidade e a evolução do negócio.",
+    reading_time: "6 min de leitura"
+  },
+  {
+    title: "O papel de sites e aplicações no posicionamento de uma empresa",
+    excerpt: "Descubra como projetos digitais bem construídos ajudam empresas a comunicar valor e criar novas oportunidades.",
+    reading_time: "4 min de leitura"
+  }
+] %>
+
+<% business_impacts = [
+  {
+    title: "Pequenos negócios",
+    description: "Ajudamos empresas que estão começando ou se estruturando a construir uma presença digital profissional e processos mais eficientes."
+  },
+  {
+    title: "Médias empresas",
+    description: "Conectamos canais, organizamos fluxos e desenvolvemos soluções que reduzem gargalos operacionais e melhoram a rotina do time."
+  },
+  {
+    title: "Grandes operações",
+    description: "Criamos estruturas digitais preparadas para escala, integração entre sistemas e evolução contínua da operação."
+  }
+] %>
+
+<% values_cards = [
+  {
+    title: "Clareza",
+    description: "Acreditamos em soluções objetivas, que façam sentido para o momento da empresa e realmente tragam valor."
+  },
+  {
+    title: "Eficiência",
+    description: "Nosso trabalho busca simplificar operações, economizar tempo e tornar processos mais leves e sustentáveis."
+  },
+  {
+    title: "Evolução",
+    description: "Construímos soluções pensando no presente da empresa, mas também na capacidade dela crescer com consistência."
+  }
+] %>
+
+<% hero_impacts = [
+  {
+    number: "01",
+    title: "Presença digital mais forte",
+    description: "Sites, páginas e aplicações que comunicam melhor o valor da empresa e criam novas oportunidades."
+  },
+  {
+    number: "02",
+    title: "Processos mais eficientes",
+    description: "Automações e integrações para reduzir tarefas manuais, retrabalho e perda de informações."
+  },
+  {
+    number: "03",
+    title: "Estrutura preparada para crescer",
+    description: "Infraestrutura, dados e soluções digitais pensadas para acompanhar a evolução do negócio."
+  }
+] %>
+
+<% partners = [
+  { name: "Clínicas" },
+  { name: "E-commerce" },
+  { name: "Educação" },
+  { name: "Serviços" },
+  { name: "Imobiliárias" },
+  { name: "Consultorias" },
+  { name: "Indústrias" },
+  { name: "Tecnologia" },
+  { name: "Varejo" },
+  { name: "Atendimento" }
+] %>
+
+<div class="sollucion-page">
+  <div class="bg-pattern"></div>
+
+  <div class="particles" aria-hidden="true">
+    <% 22.times do %>
+      <span class="particle"></span>
+    <% end %>
+  </div>
+
+  <div class="glow-lines" aria-hidden="true">
+    <span class="glow-line"></span>
+    <span class="glow-line"></span>
+    <span class="glow-line"></span>
+    <span class="glow-line"></span>
+    <span class="glow-line"></span>
+  </div>
+
+  <header class="site-header">
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+
+    <div class="sollucion-container nav-shell">
+      <div class="header-inner">
+        <%= link_to root_path, class: "brand" do %>
+          <%= image_tag "logo_main.png", alt: "Sollucion", class: "brand-logo" %>
+        <% end %>
+
+        <nav class="desktop-nav">
+          <%= link_to "Home", root_path %>
+          <%= link_to "Soluções", solutions_path %>
+          <%= link_to "Stack", stack_path %>
+          <%= link_to "Blog", blog_path %>
+          <%= link_to "Planos", plans_path %>
+          <%= link_to "Contato", contact_path %>
+        </nav>
+
+        <div class="header-actions">
+          <%= link_to "Solicitar orçamento", contact_path, class: "header-cta" %>
+        </div>
+
+        <label for="menu-toggle" class="mobile-menu-button" aria-label="Abrir menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+      </div>
+
+      <nav class="mobile-nav">
+        <%= link_to "Home", root_path %>
+        <%= link_to "Soluções", solutions_path %>
+        <%= link_to "Stack", stack_path %>
+        <%= link_to "Blog", blog_path %>
+        <%= link_to "Planos", plans_path %>
+        <%= link_to "Contato", contact_path, class: "mobile-nav-cta" %>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-banner-section">
+      <div class="hero-banner">
+        <%= image_tag "banner.jpeg", alt: "Sollucion - Automação e integração de sistemas", class: "hero-banner-image" %>
+        <div class="hero-banner-overlay"></div>
+      </div>
+    </section>
+
+    <section class="hero-section">
+      <div class="sollucion-container hero-grid hero-grid-single">
+        <div class="hero-content">
+          <h1>
+            Tecnologia para desenvolver empresas no digital com mais eficiência,
+            presença e escala.
+          </h1>
+
+          <p>
+            A Sollucion ajuda pequenos, médios e grandes negócios a evoluírem no
+            ambiente digital por meio de sites, aplicações, automações, integrações
+            e infraestrutura. Nosso foco é simplificar processos que consomem tempo,
+            organizar operações e criar soluções tecnológicas que apoiem o crescimento
+            da empresa de forma mais inteligente, segura e sustentável.
+          </p>
+
+          <div class="hero-points-grid hero-points-inline">
+            <% hero_impacts.each do |item| %>
+              <article class="hero-highlight-card">
+                <span><%= item[:number] %></span>
+                <strong><%= item[:title] %></strong>
+                <small><%= item[:description] %></small>
+              </article>
+            <% end %>
+          </div>
+
+          <div class="hero-actions">
+            <%= link_to "https://wa.me/5500000000000", target: "_blank", rel: "noopener", class: "btn-primary-sollucion" do %>
+              <i class="fa-brands fa-whatsapp"></i>
+              <span>Fale conosco</span>
+            <% end %>
+
+            <%= link_to "Solicitar orçamento", contact_path, class: "btn-secondary-sollucion" %>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="partners-section">
+      <div class="sollucion-container">
+        <div class="partners-row">
+          <p>Empresas e segmentos que podem evoluir com uma operação mais conectada</p>
+
+          <div class="partners-carousel" aria-label="Segmentos atendidos pela Sollucion">
+            <div class="partners-track">
+              <div class="partners-group">
+                <% partners.each do |partner| %>
+                  <article class="partner-card">
+                    <span><%= partner[:name] %></span>
+                  </article>
+                <% end %>
+              </div>
+
+              <div class="partners-group" aria-hidden="true">
+                <% partners.each do |partner| %>
+                  <article class="partner-card">
+                    <span><%= partner[:name] %></span>
+                  </article>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block solutions-preview">
+      <div class="sollucion-container">
+        <div class="section-heading section-heading-with-action">
+          <div>
+            <h2>Como a Sollucion pode impactar o seu negócio</h2>
+
+            <p>
+              Atuamos com tecnologia para ajudar empresas a melhorarem sua presença
+              digital, simplificarem processos e desenvolverem estruturas mais preparadas
+              para crescer.
+            </p>
+          </div>
+
+          <%= link_to "Ver soluções", solutions_path, class: "btn-secondary-sollucion" %>
+        </div>
+
+        <div class="cards-grid">
+          <% solutions.each do |solution| %>
+            <article class="service-card">
+              <div class="service-icon">
+                <%= solution[:icon].html_safe %>
+              </div>
+
+              <h3><%= solution[:title] %></h3>
+
+              <p><%= solution[:description] %></p>
+            </article>
+          <% end %>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block impact-section">
+      <div class="sollucion-container">
+        <div class="section-heading">
+          <h2>Pequenos, médios e grandes negócios podem evoluir com a tecnologia certa</h2>
+
+          <p>
+            Nosso trabalho é adaptar soluções ao momento de cada empresa, ajudando
+            desde a construção da presença digital até a estruturação de processos,
+            automações e ambientes preparados para escala.
+          </p>
+        </div>
+
+        <div class="cards-grid impact-grid">
+          <% business_impacts.each do |item| %>
+            <article class="impact-card">
+              <h3><%= item[:title] %></h3>
+              <p><%= item[:description] %></p>
+            </article>
+          <% end %>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block values-section">
+      <div class="sollucion-container">
+        <div class="section-heading">
+          <h2>Mais do que tecnologia, buscamos gerar valor real para empresas</h2>
+
+          <p>
+            Acreditamos que tecnologia deve facilitar rotinas, apoiar crescimento
+            e tornar o ambiente digital mais estratégico para negócios de qualquer porte.
+          </p>
+        </div>
+
+        <div class="cards-grid values-grid">
+          <% values_cards.each do |item| %>
+            <article class="value-card">
+              <h3><%= item[:title] %></h3>
+              <p><%= item[:description] %></p>
+            </article>
+          <% end %>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block stack-preview">
+      <div class="sollucion-container">
+        <div class="section-heading section-heading-with-action">
+          <div>
+            <h2>Capacidades técnicas para desenvolver soluções modernas</h2>
+
+            <p>
+              Unimos ferramentas, linguagens, plataformas e infraestrutura para
+              desenvolver projetos bem estruturados e alinhados aos objetivos de cada empresa.
+            </p>
+          </div>
+
+          <%= link_to "Ver stack", stack_path, class: "btn-secondary-sollucion" %>
+        </div>
+
+        <div class="cards-grid">
+          <% stack_items.each do |item| %>
+            <article class="stack-card">
+              <h3><%= item[:title] %></h3>
+
+              <p><%= item[:description] %></p>
+
+              <small><%= item[:examples] %></small>
+            </article>
+          <% end %>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block blog-preview">
+      <div class="sollucion-container">
+        <div class="section-heading section-heading-with-action">
+          <div>
+            <h2>Conteúdos sobre automação, presença digital e infraestrutura</h2>
+
+            <p>
+              Compartilhamos conteúdos para explicar como tecnologia, organização e
+              estratégia podem ajudar empresas a evoluírem digitalmente.
+            </p>
+          </div>
+
+          <%= link_to "Ver blog", blog_path, class: "btn-secondary-sollucion" %>
+        </div>
+
+        <div class="cards-grid blog-grid">
+          <% blog_posts.each do |post| %>
+            <article class="blog-card">
+              <h3><%= post[:title] %></h3>
+
+              <p><%= post[:excerpt] %></p>
+
+              <div class="blog-footer">
+                <small><%= post[:reading_time] %></small>
+                <%= link_to "Ler artigo", blog_path %>
+              </div>
+            </article>
+          <% end %>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block contact-section">
+      <div class="sollucion-container lead-form-block">
+        <div class="section-heading">
+          <h2>Vamos conversar sobre o próximo passo do seu negócio?</h2>
+
+          <p>
+            Se você busca melhorar presença digital, automatizar processos,
+            estruturar sua operação ou evoluir a base tecnológica da empresa,
+            a Sollucion pode te ajudar.
+          </p>
+
+          <div class="contact-info">
+            <a href="mailto:contato@sollucion.com.br" class="contact-item">
+              <span>✉️</span>
+              contato@sollucion.com.br
+            </a>
+
+            <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="contact-item">
+              <i class="fa-brands fa-whatsapp"></i>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <form action="#" method="post" class="lead-form">
+          <div class="lead-grid">
+            <label class="field">
+              <span>Nome</span>
+              <input type="text" name="name" placeholder="Seu nome">
+            </label>
+
+            <label class="field">
+              <span>Empresa</span>
+              <input type="text" name="company" placeholder="Nome da empresa">
+            </label>
+
+            <label class="field">
+              <span>E-mail</span>
+              <input type="email" name="email" placeholder="voce@empresa.com">
+            </label>
+
+            <label class="field">
+              <span>WhatsApp</span>
+              <input type="tel" name="phone" placeholder="(00) 00000-0000">
+            </label>
+          </div>
+
+          <label class="field field-full">
+            <span>Interesse</span>
+
+            <select name="interest">
+              <option value="">Selecione uma opção</option>
+              <option>Desenvolvimento web</option>
+              <option>Automações</option>
+              <option>Agentes de IA</option>
+              <option>Integração entre sistemas</option>
+              <option>Infraestrutura digital</option>
+              <option>Outro</option>
+            </select>
+          </label>
+
+          <label class="field field-full">
+            <span>Mensagem</span>
+
+            <textarea name="message" rows="5" placeholder="Conte brevemente o que sua empresa precisa..."></textarea>
+          </label>
+
+          <div class="lead-actions">
+            <button type="submit" class="lead-btn lead-btn-email">
+              Enviar mensagem
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="sollucion-container">
+      <%= image_tag "logo_main.png", alt: "Sollucion", class: "footer-logo" %>
+
+      <p>© <%= Date.current.year %> Sollucion. Todos os direitos reservados.</p>
+
+      <div class="footer-links">
+        <%= link_to "Soluções", solutions_path %>
+        <%= link_to "Stack", stack_path %>
+        <%= link_to "Blog", blog_path %>
+        <%= link_to "Planos", plans_path %>
+        <%= link_to "Contato", contact_path %>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Fale conosco no WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+</div>
