@@ -1,66 +1,41 @@
-<% solutions = [
+<% products_preview = [
   {
     icon: '<i class="fa-solid fa-laptop-code"></i>',
     title: "Desenvolvimento web",
-    description: "Criamos sites institucionais, landing pages e aplicações web pensadas para fortalecer presença digital, comunicação e conversão."
+    description: "Sites institucionais, landing pages e aplicações web para fortalecer a presença digital e gerar novas oportunidades."
   },
   {
     icon: '<i class="fa-solid fa-gears"></i>',
-    title: "Automações inteligentes",
-    description: "Estruturamos automações para reduzir tarefas repetitivas, melhorar fluxos internos e liberar tempo para o que realmente importa no negócio."
+    title: "Automação e IA",
+    description: "Automações, agentes inteligentes e fluxos digitais para reduzir tarefas manuais e melhorar a produtividade da operação."
   },
   {
     icon: '<i class="fa-solid fa-link"></i>',
     title: "Integração entre sistemas",
-    description: "Conectamos ferramentas, APIs, CRMs, planilhas e plataformas para manter processos mais organizados e dados mais acessíveis."
-  },
-  {
-    icon: '<i class="fa-solid fa-robot"></i>',
-    title: "Agentes de IA",
-    description: "Desenvolvemos soluções com inteligência artificial para atendimento, qualificação, suporte, automação de respostas e ganho de produtividade."
+    description: "Conectamos ferramentas, APIs, planilhas, CRMs e canais de atendimento para centralizar informações e simplificar processos."
   },
   {
     icon: '<i class="fa-solid fa-cloud"></i>',
     title: "Infraestrutura digital",
-    description: "Cuidamos da base técnica do seu projeto com foco em estabilidade, segurança, escalabilidade e organização do ambiente digital."
-  },
-  {
-    icon: '<i class="fa-solid fa-chart-line"></i>',
-    title: "Escala e evolução digital",
-    description: "Ajudamos empresas a evoluírem digitalmente com soluções que acompanham o crescimento da operação e apoiam decisões mais estratégicas."
+    description: "Estruturamos ambientes digitais com foco em estabilidade, segurança, organização e capacidade de crescimento."
   }
 ] %>
 
-<% stack_items = [
+<% capabilities = [
   {
-    title: "Automação e orquestração",
-    description: "Construção de fluxos automatizados, webhooks, integração entre ferramentas e otimização de processos.",
-    examples: "n8n, APIs, Webhooks"
+    icon: '<i class="fa-solid fa-robot"></i>',
+    title: "Atendimento mais inteligente",
+    description: "Fluxos automatizados, triagem, respostas assistidas por IA e organização da comunicação com clientes."
   },
   {
-    title: "Desenvolvimento web",
-    description: "Criação de páginas institucionais, landing pages, sistemas internos e aplicações modernas para web.",
-    examples: "Ruby on Rails, HTML, CSS e JavaScript"
+    icon: '<i class="fa-solid fa-chart-line"></i>',
+    title: "Operação preparada para escala",
+    description: "Estruturas digitais que acompanham o crescimento da empresa sem depender apenas de processos manuais."
   },
   {
-    title: "Inteligência artificial",
-    description: "Aplicação de IA para atendimento, produtividade, triagem, qualificação e automação de interações.",
-    examples: "Agentes, IA generativa e fluxos"
-  },
-  {
-    title: "Banco de dados e organização",
-    description: "Estruturação de dados, consultas, armazenamento e integração de informações operacionais.",
-    examples: "PostgreSQL, planilhas, CRM"
-  },
-  {
-    title: "Infraestrutura e deploy",
-    description: "Preparação de ambientes para colocar soluções no ar com segurança, performance e estabilidade.",
-    examples: "Docker, Traefik, VPS, SSL"
-  },
-  {
-    title: "Canais e ecossistema digital",
-    description: "Integração entre ferramentas de atendimento, comunicação, operação e presença digital.",
-    examples: "Google Workspace, Meta, WhatsApp"
+    icon: '<i class="fa-solid fa-database"></i>',
+    title: "Dados e ferramentas conectadas",
+    description: "Integrações para reduzir retrabalho, evitar perda de informações e melhorar a tomada de decisão."
   }
 ] %>
 
@@ -74,41 +49,6 @@
     title: "Por que a estrutura digital da sua empresa influencia no crescimento",
     excerpt: "Veja como uma boa base técnica impacta desempenho, segurança, escalabilidade e a evolução do negócio.",
     reading_time: "6 min de leitura"
-  },
-  {
-    title: "O papel de sites e aplicações no posicionamento de uma empresa",
-    excerpt: "Descubra como projetos digitais bem construídos ajudam empresas a comunicar valor e criar novas oportunidades.",
-    reading_time: "4 min de leitura"
-  }
-] %>
-
-<% business_impacts = [
-  {
-    title: "Pequenos negócios",
-    description: "Ajudamos empresas que estão começando ou se estruturando a construir uma presença digital profissional e processos mais eficientes."
-  },
-  {
-    title: "Médias empresas",
-    description: "Conectamos canais, organizamos fluxos e desenvolvemos soluções que reduzem gargalos operacionais e melhoram a rotina do time."
-  },
-  {
-    title: "Grandes operações",
-    description: "Criamos estruturas digitais preparadas para escala, integração entre sistemas e evolução contínua da operação."
-  }
-] %>
-
-<% values_cards = [
-  {
-    title: "Clareza",
-    description: "Acreditamos em soluções objetivas, que façam sentido para o momento da empresa e realmente tragam valor."
-  },
-  {
-    title: "Eficiência",
-    description: "Nosso trabalho busca simplificar operações, economizar tempo e tornar processos mais leves e sustentáveis."
-  },
-  {
-    title: "Evolução",
-    description: "Construímos soluções pensando no presente da empresa, mas também na capacidade dela crescer com consistência."
   }
 ] %>
 
@@ -160,46 +100,6 @@
     <span class="glow-line"></span>
   </div>
 
-  <header class="site-header">
-    <input type="checkbox" id="menu-toggle" class="menu-toggle">
-
-    <div class="sollucion-container nav-shell">
-      <div class="header-inner">
-        <%= link_to root_path, class: "brand" do %>
-          <%= image_tag "logo_main.png", alt: "Sollucion", class: "brand-logo" %>
-        <% end %>
-
-        <nav class="desktop-nav">
-          <%= link_to "Home", root_path %>
-          <%= link_to "Soluções", solutions_path %>
-          <%= link_to "Stack", stack_path %>
-          <%= link_to "Blog", blog_path %>
-          <%= link_to "Planos", plans_path %>
-          <%= link_to "Contato", contact_path %>
-        </nav>
-
-        <div class="header-actions">
-          <%= link_to "Solicitar orçamento", contact_path, class: "header-cta" %>
-        </div>
-
-        <label for="menu-toggle" class="mobile-menu-button" aria-label="Abrir menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </label>
-      </div>
-
-      <nav class="mobile-nav">
-        <%= link_to "Home", root_path %>
-        <%= link_to "Soluções", solutions_path %>
-        <%= link_to "Stack", stack_path %>
-        <%= link_to "Blog", blog_path %>
-        <%= link_to "Planos", plans_path %>
-        <%= link_to "Contato", contact_path, class: "mobile-nav-cta" %>
-      </nav>
-    </div>
-  </header>
-
   <main>
     <section class="hero-banner-section">
       <div class="hero-banner">
@@ -218,7 +118,7 @@
 
           <p>
             A Sollucion ajuda pequenos, médios e grandes negócios a evoluírem no
-            ambiente digital por meio de sites, aplicações, automações, integrações
+            ambiente digital por meio de produtos digitais, automações, integrações
             e infraestrutura. Nosso foco é simplificar processos que consomem tempo,
             organizar operações e criar soluções tecnológicas que apoiem o crescimento
             da empresa de forma mais inteligente, segura e sustentável.
@@ -240,7 +140,7 @@
               <span>Fale conosco</span>
             <% end %>
 
-            <%= link_to "Solicitar orçamento", contact_path, class: "btn-secondary-sollucion" %>
+            <%= link_to "Conhecer produtos", products_path, class: "btn-secondary-sollucion" %>
           </div>
         </div>
       </div>
@@ -278,102 +178,92 @@
       <div class="sollucion-container">
         <div class="section-heading section-heading-with-action">
           <div>
-            <h2>Como a Sollucion pode impactar o seu negócio</h2>
+            <h2>Produtos digitais para estruturar e evoluir sua empresa</h2>
 
             <p>
-              Atuamos com tecnologia para ajudar empresas a melhorarem sua presença
-              digital, simplificarem processos e desenvolverem estruturas mais preparadas
-              para crescer.
+              Atuamos com produtos digitais que ajudam empresas a melhorar presença,
+              organizar processos e construir uma base tecnológica mais preparada
+              para crescimento.
             </p>
           </div>
 
-          <%= link_to "Ver soluções", solutions_path, class: "btn-secondary-sollucion" %>
+          <%= link_to "Ver produtos", products_path, class: "btn-secondary-sollucion" %>
         </div>
 
-        <div class="cards-grid">
-          <% solutions.each do |solution| %>
+        <div class="cards-grid solutions-grid">
+          <% products_preview.each do |product| %>
             <article class="service-card">
               <div class="service-icon">
-                <%= solution[:icon].html_safe %>
+                <%= product[:icon].html_safe %>
               </div>
 
-              <h3><%= solution[:title] %></h3>
+              <h3><%= product[:title] %></h3>
 
-              <p><%= solution[:description] %></p>
+              <p><%= product[:description] %></p>
             </article>
           <% end %>
         </div>
       </div>
     </section>
 
-    <section class="section-block impact-section">
-      <div class="sollucion-container">
-        <div class="section-heading">
-          <h2>Pequenos, médios e grandes negócios podem evoluir com a tecnologia certa</h2>
-
-          <p>
-            Nosso trabalho é adaptar soluções ao momento de cada empresa, ajudando
-            desde a construção da presença digital até a estruturação de processos,
-            automações e ambientes preparados para escala.
-          </p>
-        </div>
-
-        <div class="cards-grid impact-grid">
-          <% business_impacts.each do |item| %>
-            <article class="impact-card">
-              <h3><%= item[:title] %></h3>
-              <p><%= item[:description] %></p>
-            </article>
-          <% end %>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-block values-section">
-      <div class="sollucion-container">
-        <div class="section-heading">
+    <section class="section-block narrative-section">
+      <div class="sollucion-container narrative-panel">
+        <div class="narrative-copy">
           <h2>Mais do que tecnologia, buscamos gerar valor real para empresas</h2>
 
           <p>
-            Acreditamos que tecnologia deve facilitar rotinas, apoiar crescimento
-            e tornar o ambiente digital mais estratégico para negócios de qualquer porte.
+            Acreditamos que tecnologia deve facilitar a rotina, reduzir complexidade
+            e abrir espaço para que empresas foquem no que realmente move o negócio:
+            atendimento, vendas, operação, relacionamento e crescimento.
           </p>
         </div>
 
-        <div class="cards-grid values-grid">
-          <% values_cards.each do |item| %>
-            <article class="value-card">
-              <h3><%= item[:title] %></h3>
-              <p><%= item[:description] %></p>
-            </article>
-          <% end %>
+        <div class="narrative-list">
+          <div class="narrative-item">
+            <strong>Clareza</strong>
+            <span>Produtos objetivos, alinhados ao momento e à necessidade da empresa.</span>
+          </div>
+
+          <div class="narrative-item">
+            <strong>Eficiência</strong>
+            <span>Processos mais leves, menos tarefas manuais e mais organização.</span>
+          </div>
+
+          <div class="narrative-item">
+            <strong>Evolução</strong>
+            <span>Estruturas digitais pensadas para crescer com consistência.</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section-block stack-preview">
+    <section class="section-block capabilities-section" data-controller="scroll-reveal">
       <div class="sollucion-container">
-        <div class="section-heading section-heading-with-action">
-          <div>
-            <h2>Capacidades técnicas para desenvolver soluções modernas</h2>
+        <div class="section-heading">
+          <h2>O que podemos estruturar para sua operação evoluir</h2>
 
-            <p>
-              Unimos ferramentas, linguagens, plataformas e infraestrutura para
-              desenvolver projetos bem estruturados e alinhados aos objetivos de cada empresa.
-            </p>
-          </div>
-
-          <%= link_to "Ver stack", stack_path, class: "btn-secondary-sollucion" %>
+          <p>
+            Em vez de entregar produtos isolados, conectamos presença digital,
+            automação, atendimento, dados e infraestrutura para criar uma operação
+            mais fluida e preparada para o futuro.
+          </p>
         </div>
 
-        <div class="cards-grid">
-          <% stack_items.each do |item| %>
-            <article class="stack-card">
-              <h3><%= item[:title] %></h3>
+        <div class="capabilities-list">
+          <% capabilities.each_with_index do |item, index| %>
+            <article
+              class="capability-item scroll-reveal-item"
+              data-scroll-reveal-target="item"
+              style="--reveal-delay: <%= index * 90 %>ms;"
+            >
+              <div class="capability-icon">
+                <%= item[:icon].html_safe %>
+              </div>
 
-              <p><%= item[:description] %></p>
-
-              <small><%= item[:examples] %></small>
+              <div>
+                <h3><%= item[:title] %></h3>
+                <p><%= item[:description] %></p>
+              </div>
             </article>
           <% end %>
         </div>
@@ -496,8 +386,7 @@
       <p>© <%= Date.current.year %> Sollucion. Todos os direitos reservados.</p>
 
       <div class="footer-links">
-        <%= link_to "Soluções", solutions_path %>
-        <%= link_to "Stack", stack_path %>
+        <%= link_to "Produtos", products_path %>
         <%= link_to "Blog", blog_path %>
         <%= link_to "Planos", plans_path %>
         <%= link_to "Contato", contact_path %>

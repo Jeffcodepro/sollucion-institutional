@@ -1,0 +1,109 @@
+<div class="sollucion-page products-page">
+  <div class="bg-pattern"></div>
+
+  <div class="particles" aria-hidden="true">
+    <% 22.times do %>
+      <span class="particle"></span>
+    <% end %>
+  </div>
+
+  <div class="glow-lines" aria-hidden="true">
+    <span class="glow-line"></span>
+    <span class="glow-line"></span>
+    <span class="glow-line"></span>
+    <span class="glow-line"></span>
+    <span class="glow-line"></span>
+  </div>
+
+  <main class="internal-page products-index-page">
+    <section class="products-hero-section">
+      <div class="sollucion-container">
+        <div class="products-hero-content">
+          <h1>Produtos digitais para atendimento, automação e presença web</h1>
+
+          <p>
+            Desenvolvemos plataformas, automações e soluções web para ajudar empresas
+            a organizarem sua operação, centralizarem canais, reduzirem tarefas manuais
+            e crescerem no ambiente digital com mais eficiência.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="products-showcase-section">
+      <div class="sollucion-container">
+        <div class="products-showcase-row">
+          <% @products.each_with_index do |product, index| %>
+            <%= link_to product_path(product[:slug]), class: "product-showcase-card", style: "--card-index: #{index};" do %>
+              <div class="product-showcase-image-wrap">
+                <%= image_tag product[:image], alt: product[:name], class: "product-showcase-image" %>
+              </div>
+
+              <div class="product-showcase-overlay"></div>
+
+              <div class="product-showcase-content">
+                <div class="product-showcase-top">
+                  <span class="product-showcase-icon">
+                    <i class="<%= product[:icon] %>"></i>
+                  </span>
+                </div>
+
+                <div class="product-showcase-main">
+                  <h2><%= product[:name] %></h2>
+
+                  <p class="product-showcase-subtitle">
+                    <%= product[:subtitle] %>
+                  </p>
+
+                  <p class="product-showcase-description">
+                    <%= product[:short_description] %>
+                  </p>
+                </div>
+
+                <div class="product-showcase-link">
+                  <span>Ver detalhes</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </section>
+
+    <section class="products-support-section">
+      <div class="sollucion-container products-support-panel">
+        <div>
+          <h2>Não sabe qual produto faz mais sentido para sua empresa?</h2>
+
+          <p>
+            Podemos analisar o momento do seu negócio e indicar a melhor estrutura
+            para começar com clareza, evitando soluções desnecessárias e criando uma
+            base digital preparada para evoluir.
+          </p>
+        </div>
+
+        <%= link_to "Conversar com a Sollucion", contact_path, class: "btn-primary-sollucion" %>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="sollucion-container">
+      <%= image_tag "logo_main.png", alt: "Sollucion", class: "footer-logo" %>
+
+      <p>© <%= Date.current.year %> Sollucion. Todos os direitos reservados.</p>
+
+      <div class="footer-links">
+        <%= link_to "Produtos", products_path %>
+        <%= link_to "Blog", blog_path %>
+        <%= link_to "Planos", plans_path %>
+        <%= link_to "Contato", contact_path %>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Fale conosco no WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+</div>
