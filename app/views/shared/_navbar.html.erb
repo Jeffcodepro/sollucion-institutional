@@ -1,0 +1,37 @@
+<header class="site-header">
+  <input type="checkbox" id="menu-toggle" class="menu-toggle">
+
+  <div class="sollucion-container nav-shell">
+    <div class="header-inner">
+      <%= link_to root_path, class: "brand" do %>
+        <%= image_tag "logo_main.png", alt: "Sollucion", class: "brand-logo" %>
+      <% end %>
+
+      <nav class="desktop-nav">
+        <%= link_to "Home", root_path, class: ("active" if current_page?(root_path)) %>
+        <%= link_to "Produtos", products_path, class: ("active" if current_page?(products_path)) %>
+        <%= link_to "Blog", blog_path, class: ("active" if current_page?(blog_path)) %>
+        <%= link_to "Planos", plans_path, class: ("active" if current_page?(plans_path)) %>
+        <%= link_to "Contato", contact_path, class: ("active" if current_page?(contact_path)) %>
+      </nav>
+
+      <div class="header-actions">
+        <%= link_to "Solicitar orçamento", contact_path, class: "header-cta" %>
+      </div>
+
+      <label for="menu-toggle" class="mobile-menu-button" aria-label="Abrir menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+    </div>
+
+    <nav class="mobile-nav">
+      <%= link_to "Home", root_path %>
+      <%= link_to "Produtos", products_path %>
+      <%= link_to "Blog", blog_path %>
+      <%= link_to "Planos", plans_path %>
+      <%= link_to "Contato", contact_path, class: "mobile-nav-cta" %>
+    </nav>
+  </div>
+</header>

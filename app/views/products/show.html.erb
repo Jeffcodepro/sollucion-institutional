@@ -1,0 +1,131 @@
+<%
+  product_slug = @product[:slug].to_s
+
+  image_classes = ["product-detail-image"]
+  image_classes << "product-detail-image--go-atendi" if product_slug.include?("go-atendi")
+  image_classes << "product-detail-image--n8n" if product_slug.include?("n8n")
+  image_classes << "product-detail-image--web" if product_slug.include?("web")
+%>
+
+<div class="sollucion-page product-detail-page">
+  <div class="bg-pattern"></div>
+
+  <div class="particles" aria-hidden="true">
+    <% 22.times do %>
+      <span class="particle"></span>
+    <% end %>
+  </div>
+
+  <div class="glow-lines" aria-hidden="true">
+    <span class="glow-line"></span>
+    <span class="glow-line"></span>
+    <span class="glow-line"></span>
+    <span class="glow-line"></span>
+    <span class="glow-line"></span>
+  </div>
+
+  <main class="internal-page">
+    <section class="product-detail-hero">
+      <div class="sollucion-container product-detail-grid">
+        <div class="product-detail-copy">
+          <%= link_to products_path, class: "product-back-link" do %>
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Voltar para produtos</span>
+          <% end %>
+
+          <h1><%= @product[:name] %></h1>
+
+          <p class="product-detail-subtitle">
+            <%= @product[:subtitle] %>
+          </p>
+
+          <p class="product-detail-description">
+            <%= @product[:description] %>
+          </p>
+
+          <div class="product-detail-actions">
+            <%= link_to contact_path, class: "btn-primary-sollucion" do %>
+              <span><%= @product[:cta] %></span>
+              <i class="fa-solid fa-arrow-right"></i>
+            <% end %>
+
+            <%= link_to "Ver todos os produtos", products_path, class: "btn-secondary-sollucion" %>
+          </div>
+        </div>
+
+        <div class="product-detail-visual">
+          <%= image_tag @product[:image], alt: @product[:name], class: image_classes.join(" ") %>
+
+          <div class="product-detail-floating-card">
+            <i class="<%= @product[:icon] %>"></i>
+            <span><%= @product[:highlight] %></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="product-detail-section">
+      <div class="sollucion-container product-detail-content-grid">
+        <article class="product-info-panel">
+          <h2>Principais funcionalidades</h2>
+
+          <div class="product-feature-list">
+            <% @product[:features].each do |feature| %>
+              <div class="product-feature-item">
+                <i class="fa-solid fa-check"></i>
+                <span><%= feature %></span>
+              </div>
+            <% end %>
+          </div>
+        </article>
+
+        <article class="product-info-panel">
+          <h2>O que entregamos</h2>
+
+          <div class="product-feature-list">
+            <% @product[:deliverables].each do |deliverable| %>
+              <div class="product-feature-item">
+                <i class="fa-solid fa-circle-check"></i>
+                <span><%= deliverable %></span>
+              </div>
+            <% end %>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="product-final-cta-section">
+      <div class="sollucion-container product-final-cta">
+        <div>
+          <h2>Quer entender como esse produto se encaixa no seu negócio?</h2>
+
+          <p>
+            Vamos conversar sobre sua operação, seus canais, seus processos e o que
+            pode ser estruturado para gerar mais eficiência e evolução digital.
+          </p>
+        </div>
+
+        <%= link_to "Solicitar orçamento", contact_path, class: "btn-primary-sollucion" %>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="sollucion-container">
+      <%= image_tag "logo_main.png", alt: "Sollucion", class: "footer-logo" %>
+
+      <p>© <%= Date.current.year %> Sollucion. Todos os direitos reservados.</p>
+
+      <div class="footer-links">
+        <%= link_to "Produtos", products_path %>
+        <%= link_to "Blog", blog_path %>
+        <%= link_to "Planos", plans_path %>
+        <%= link_to "Contato", contact_path %>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Fale conosco no WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+</div>
