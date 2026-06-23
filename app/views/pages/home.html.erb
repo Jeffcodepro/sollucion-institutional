@@ -1,23 +1,29 @@
 <% products_preview = [
   {
-    icon: '<i class="fa-solid fa-laptop-code"></i>',
-    title: "Desenvolvimento web",
-    description: "Sites institucionais, landing pages e aplicações web para fortalecer a presença digital e gerar novas oportunidades."
+    image: "products/go-atendi.png",
+    icon: '<i class="fa-solid fa-comments"></i>',
+    title: "GO ATendi",
+    description: "Uma plataforma criada para centralizar a comunicação da empresa em um único ambiente, conectando canais como WhatsApp, Instagram, Messenger e outros pontos de contato.",
+    items: [
+      "Atendimento organizado em múltiplos canais",
+      "Agentes inteligentes para apoiar triagem e respostas",
+      "Histórico, status, métricas e visão mais clara da operação"
+    ],
+    cta: "Conhecer plataforma",
+    path: product_path("go-atendi")
   },
   {
-    icon: '<i class="fa-solid fa-gears"></i>',
-    title: "Automação e IA",
-    description: "Automações, agentes inteligentes e fluxos digitais para reduzir tarefas manuais e melhorar a produtividade da operação."
-  },
-  {
-    icon: '<i class="fa-solid fa-link"></i>',
-    title: "Integração entre sistemas",
-    description: "Conectamos ferramentas, APIs, planilhas, CRMs e canais de atendimento para centralizar informações e simplificar processos."
-  },
-  {
-    icon: '<i class="fa-solid fa-cloud"></i>',
-    title: "Infraestrutura digital",
-    description: "Estruturamos ambientes digitais com foco em estabilidade, segurança, organização e capacidade de crescimento."
+    image: "products/devweb.png",
+    icon: '<i class="fa-solid fa-layer-group"></i>',
+    title: "Soluções digitais sob medida",
+    description: "Unimos automações com n8n, desenvolvimento web, integrações e infraestrutura para criar uma base digital mais eficiente para empresas.",
+    items: [
+      "Automações e integrações para reduzir tarefas manuais",
+      "Sites, landing pages e sistemas para presença digital",
+      "Estrutura técnica preparada para crescimento e performance"
+    ],
+    cta: "Ver produtos",
+    path: products_path
   }
 ] %>
 
@@ -41,14 +47,20 @@
 
 <% blog_posts = [
   {
-    title: "Como reduzir tarefas manuais e ganhar produtividade com automação",
-    excerpt: "Entenda como fluxos automatizados ajudam empresas a economizar tempo, evitar retrabalho e organizar melhor suas operações.",
-    reading_time: "5 min de leitura"
+    image: "blog/devweb-blog.png",
+    title: "Desenvolvimento web e presença digital: por que sua empresa precisa de uma base online forte",
+    category: "Desenvolvimento web",
+    published_at: Date.new(2026, 6, 23),
+    excerpt: "Entenda como sites, landing pages e sistemas web ajudam empresas a gerar confiança, captar oportunidades e organizar processos no digital.",
+    path: blog_post_path("desenvolvimento-web-presenca-digital-empresas")
   },
   {
-    title: "Por que a estrutura digital da sua empresa influencia no crescimento",
-    excerpt: "Veja como uma boa base técnica impacta desempenho, segurança, escalabilidade e a evolução do negócio.",
-    reading_time: "6 min de leitura"
+    image: "blog/digital-blog.png",
+    title: "Estratégia digital para negócios: como organizar processos e evoluir com tecnologia",
+    category: "Estratégia digital",
+    published_at: Date.new(2026, 6, 23),
+    excerpt: "Veja como pequenas melhorias digitais podem gerar ganhos operacionais, reduzir desorganização e preparar empresas para crescer com mais eficiência.",
+    path: blog_post_path("estrategia-digital-negocios-operacao-organizada")
   }
 ] %>
 
@@ -103,7 +115,7 @@
   <main>
     <section class="hero-banner-section">
       <div class="hero-banner">
-        <%= image_tag "banner.jpeg", alt: "Sollucion - Automação e integração de sistemas", class: "hero-banner-image" %>
+        <%= image_tag "banner.png", alt: "Sollucion - Automação e integração de sistemas", class: "hero-banner-image" %>
         <div class="hero-banner-overlay"></div>
       </div>
     </section>
@@ -174,32 +186,50 @@
       </div>
     </section>
 
-    <section class="section-block solutions-preview">
+    <section class="section-block products-preview">
       <div class="sollucion-container">
         <div class="section-heading section-heading-with-action">
           <div>
             <h2>Produtos digitais para estruturar e evoluir sua empresa</h2>
 
             <p>
-              Atuamos com produtos digitais que ajudam empresas a melhorar presença,
-              organizar processos e construir uma base tecnológica mais preparada
-              para crescimento.
+              Nossos produtos conectam atendimento, automação, presença digital,
+              dados e infraestrutura para criar uma operação mais organizada,
+              eficiente e preparada para crescer.
             </p>
           </div>
 
           <%= link_to "Ver produtos", products_path, class: "btn-secondary-sollucion" %>
         </div>
 
-        <div class="cards-grid solutions-grid">
+        <div class="cards-grid home-products-grid">
           <% products_preview.each do |product| %>
-            <article class="service-card">
-              <div class="service-icon">
-                <%= product[:icon].html_safe %>
+            <article class="home-product-card">
+              <div class="home-product-media">
+                <%= image_tag product[:image], alt: product[:title], class: "home-product-image" %>
+                <div class="home-product-media-overlay"></div>
+
+                <div class="home-product-icon">
+                  <%= product[:icon].html_safe %>
+                </div>
               </div>
 
-              <h3><%= product[:title] %></h3>
+              <div class="home-product-content">
+                <h3><%= product[:title] %></h3>
 
-              <p><%= product[:description] %></p>
+                <p><%= product[:description] %></p>
+
+                <ul class="home-product-list">
+                  <% product[:items].each do |item| %>
+                    <li><%= item %></li>
+                  <% end %>
+                </ul>
+
+                <%= link_to product[:path], class: "home-product-link" do %>
+                  <span><%= product[:cta] %></span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                <% end %>
+              </div>
             </article>
           <% end %>
         </div>
@@ -274,27 +304,43 @@
       <div class="sollucion-container">
         <div class="section-heading section-heading-with-action">
           <div>
-            <h2>Conteúdos sobre automação, presença digital e infraestrutura</h2>
+            <h2>Conteúdos para empresas que querem evoluir no digital</h2>
 
             <p>
-              Compartilhamos conteúdos para explicar como tecnologia, organização e
-              estratégia podem ajudar empresas a evoluírem digitalmente.
+              No blog, explicamos como tecnologia, organização e estratégia podem
+              impactar diretamente atendimento, produtividade, presença online,
+              infraestrutura e tomada de decisão.
             </p>
           </div>
 
           <%= link_to "Ver blog", blog_path, class: "btn-secondary-sollucion" %>
         </div>
 
-        <div class="cards-grid blog-grid">
+        <div class="cards-grid home-blog-grid">
           <% blog_posts.each do |post| %>
-            <article class="blog-card">
-              <h3><%= post[:title] %></h3>
+            <article class="home-blog-card">
+              <div class="home-blog-image-wrap">
+                <%= image_tag post[:image], alt: post[:title], class: "home-blog-image" %>
+              </div>
 
-              <p><%= post[:excerpt] %></p>
+              <div class="home-blog-content">
+                <div class="home-blog-meta">
+                  <span class="home-blog-category"><%= post[:category] %></span>
+                  <small class="home-blog-date">Publicado em <%= post[:published_at].strftime("%d/%m/%Y") %></small>
+                </div>
 
-              <div class="blog-footer">
-                <small><%= post[:reading_time] %></small>
-                <%= link_to "Ler artigo", blog_path %>
+                <h3><%= post[:title] %></h3>
+
+                <p><%= post[:excerpt] %></p>
+
+                <div class="blog-footer">
+                  <small>Conteúdo estratégico</small>
+
+                  <%= link_to post[:path] do %>
+                    Ler artigo
+                    <i class="fa-solid fa-arrow-right"></i>
+                  <% end %>
+                </div>
               </div>
             </article>
           <% end %>
@@ -313,16 +359,50 @@
             a Sollucion pode te ajudar.
           </p>
 
-          <div class="contact-info">
-            <a href="mailto:contato@sollucion.com.br" class="contact-item">
-              <span>✉️</span>
-              contato@sollucion.com.br
+          <div class="contact-info contact-info-grid">
+            <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="contact-item contact-card">
+              <span class="contact-icon">
+                <i class="fa-brands fa-whatsapp"></i>
+              </span>
+
+              <span class="contact-copy">
+                <small>WhatsApp</small>
+                <strong>Fale com a Sollucion</strong>
+              </span>
             </a>
 
-            <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="contact-item">
-              <i class="fa-brands fa-whatsapp"></i>
-              WhatsApp
+            <a href="mailto:contato@sollucion.com.br" class="contact-item contact-card">
+              <span class="contact-icon">
+                <i class="fa-regular fa-envelope"></i>
+              </span>
+
+              <span class="contact-copy">
+                <small>E-mail</small>
+                <strong>contato@sollucion.com.br</strong>
+              </span>
             </a>
+
+            <a href="https://www.instagram.com/sollucion.ltda?igsh=cmg2d3dzamF3eTgz" target="_blank" rel="noopener" class="contact-item contact-card">
+              <span class="contact-icon">
+                <i class="fa-brands fa-instagram"></i>
+              </span>
+
+              <span class="contact-copy">
+                <small>Instagram</small>
+                <strong>Sollucion</strong>
+              </span>
+            </a>
+
+            <div class="contact-item contact-card">
+              <span class="contact-icon">
+                <i class="fa-solid fa-location-dot"></i>
+              </span>
+
+              <span class="contact-copy">
+                <small>Endereço</small>
+                <strong>São Paulo - SP</strong>
+              </span>
+            </div>
           </div>
         </div>
 
@@ -354,9 +434,9 @@
 
             <select name="interest">
               <option value="">Selecione uma opção</option>
+              <option>GO ATendi</option>
+              <option>Automações com n8n</option>
               <option>Desenvolvimento web</option>
-              <option>Automações</option>
-              <option>Agentes de IA</option>
               <option>Integração entre sistemas</option>
               <option>Infraestrutura digital</option>
               <option>Outro</option>
