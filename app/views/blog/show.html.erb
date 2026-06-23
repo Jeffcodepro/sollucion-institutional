@@ -1,2 +1,112 @@
-<h1>Blog#show</h1>
-<p>Find me in app/views/blog/show.html.erb</p>
+<div class="sollucion-page blog-detail-page">
+  <div class="bg-pattern"></div>
+
+  <div class="particles" aria-hidden="true">
+    <% 22.times do %>
+      <span class="particle"></span>
+    <% end %>
+  </div>
+
+  <div class="glow-lines" aria-hidden="true">
+    <span class="glow-line"></span>
+    <span class="glow-line"></span>
+    <span class="glow-line"></span>
+    <span class="glow-line"></span>
+    <span class="glow-line"></span>
+  </div>
+
+  <main class="internal-page blog-detail-main">
+    <section class="blog-detail-hero">
+      <div class="sollucion-container">
+        <%= link_to blog_path, class: "blog-back-link" do %>
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Voltar para o blog</span>
+        <% end %>
+
+        <div class="blog-detail-heading">
+          <div class="blog-detail-meta">
+            <span><%= @post[:category] %></span>
+            <small>Publicado em <%= @post[:published_at].strftime("%d/%m/%Y") %></small>
+          </div>
+
+          <h1><%= @post[:title] %></h1>
+
+          <p><%= @post[:excerpt] %></p>
+        </div>
+
+        <div class="blog-detail-cover-wrap">
+          <%= image_tag @post[:image], alt: @post[:title], class: "blog-detail-cover" %>
+        </div>
+      </div>
+    </section>
+
+    <section class="blog-article-section">
+      <div class="sollucion-container blog-article-layout">
+        <article class="blog-article">
+          <p class="blog-article-intro">
+            <%= @post[:intro] %>
+          </p>
+
+          <% @post[:sections].each do |section| %>
+            <section class="blog-article-block">
+              <h2><%= section[:title] %></h2>
+              <p><%= section[:body] %></p>
+            </section>
+          <% end %>
+
+          <section class="blog-article-block blog-article-conclusion">
+            <h2>Conclusão</h2>
+            <p><%= @post[:conclusion] %></p>
+          </section>
+        </article>
+
+        <aside class="blog-article-aside">
+          <div class="blog-aside-card">
+            <h3>Resumo do conteúdo</h3>
+
+            <p>
+              Este artigo mostra como tecnologia pode deixar operações mais
+              rápidas, organizadas e preparadas para crescer com mais segurança.
+            </p>
+
+            <%= link_to "Falar com a Sollucion", contact_path, class: "btn-secondary-sollucion" %>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="blog-cta-section">
+      <div class="sollucion-container blog-cta-panel">
+        <div>
+          <h2>Quer aplicar isso na sua empresa?</h2>
+
+          <p>
+            A Sollucion pode ajudar sua empresa a transformar tecnologia em processos
+            mais eficientes, atendimento mais organizado e uma estrutura digital mais forte.
+          </p>
+        </div>
+
+        <%= link_to "Solicitar orçamento", contact_path, class: "btn-primary-sollucion" %>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="sollucion-container">
+      <%= image_tag "logo_main.png", alt: "Sollucion", class: "footer-logo" %>
+
+      <p>© <%= Date.current.year %> Sollucion. Todos os direitos reservados.</p>
+
+      <div class="footer-links">
+        <%= link_to "Produtos", products_path %>
+        <%= link_to "Blog", blog_path %>
+        <%= link_to "Planos", plans_path %>
+        <%= link_to "Contato", contact_path %>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Fale conosco no WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+</div>

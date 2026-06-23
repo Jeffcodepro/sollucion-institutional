@@ -1,2 +1,98 @@
-<h1>Blog#index</h1>
-<p>Find me in app/views/blog/index.html.erb</p>
+<div class="sollucion-page blog-page">
+  <div class="bg-pattern"></div>
+
+  <div class="particles" aria-hidden="true">
+    <% 22.times do %>
+      <span class="particle"></span>
+    <% end %>
+  </div>
+
+  <div class="glow-lines" aria-hidden="true">
+    <span class="glow-line"></span>
+    <span class="glow-line"></span>
+    <span class="glow-line"></span>
+    <span class="glow-line"></span>
+    <span class="glow-line"></span>
+  </div>
+
+  <main class="internal-page blog-index-page">
+    <section class="blog-hero-section">
+      <div class="sollucion-container blog-hero-grid">
+        <div class="blog-hero-copy">
+          <h1>Conteúdos para empresas que querem evoluir no digital</h1>
+
+          <p>
+            Artigos sobre automação, atendimento, infraestrutura, performance e
+            desenvolvimento digital explicados de forma prática, sempre conectando
+            tecnologia com impacto real nos negócios.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="blog-posts-section">
+      <div class="sollucion-container">
+        <div class="blog-posts-grid">
+          <% @posts.each do |post| %>
+            <%= link_to blog_post_path(post[:slug]), class: "blog-post-card" do %>
+              <div class="blog-post-image-wrap">
+                <%= image_tag post[:image], alt: post[:title], class: "blog-post-image" %>
+              </div>
+
+              <div class="blog-post-content">
+                <div class="blog-post-meta">
+                  <span><%= post[:category] %></span>
+                  <small>Publicado em <%= post[:published_at].strftime("%d/%m/%Y") %></small>
+                </div>
+
+                <h2><%= post[:title] %></h2>
+
+                <p><%= post[:excerpt] %></p>
+
+                <div class="blog-post-link">
+                  <span>Ler conteúdo</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </section>
+
+    <section class="blog-cta-section">
+      <div class="sollucion-container blog-cta-panel">
+        <div>
+          <h2>Quer transformar essas ideias em soluções reais?</h2>
+
+          <p>
+            Podemos analisar sua operação e indicar caminhos para automatizar
+            processos, melhorar sua estrutura digital ou desenvolver produtos
+            que conectem tecnologia com resultado.
+          </p>
+        </div>
+
+        <%= link_to "Conversar com a Sollucion", contact_path, class: "btn-primary-sollucion" %>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="sollucion-container">
+      <%= image_tag "logo_main.png", alt: "Sollucion", class: "footer-logo" %>
+
+      <p>© <%= Date.current.year %> Sollucion. Todos os direitos reservados.</p>
+
+      <div class="footer-links">
+        <%= link_to "Produtos", products_path %>
+        <%= link_to "Blog", blog_path %>
+        <%= link_to "Planos", plans_path %>
+        <%= link_to "Contato", contact_path %>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Fale conosco no WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+</div>
