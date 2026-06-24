@@ -9,8 +9,9 @@
       "Agentes inteligentes para apoiar triagem e respostas",
       "Histórico, status, métricas e visão mais clara da operação"
     ],
-    cta: "Conhecer plataforma",
-    path: product_path("go-atendi")
+    cta: "Acessar o GO ATendi",
+    path: "https://www.goatendi.com.br",
+    external: true
   },
   {
     image: "products/devweb.png",
@@ -23,7 +24,8 @@
       "Estrutura técnica preparada para crescimento e performance"
     ],
     cta: "Ver produtos",
-    path: products_path
+    path: products_path,
+    external: false
   }
 ] %>
 
@@ -225,9 +227,16 @@
                   <% end %>
                 </ul>
 
-                <%= link_to product[:path], class: "home-product-link" do %>
-                  <span><%= product[:cta] %></span>
-                  <i class="fa-solid fa-arrow-right"></i>
+                <% if product[:external] %>
+                  <%= link_to product[:path], target: "_blank", rel: "noopener", class: "home-product-link" do %>
+                    <span><%= product[:cta] %></span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to product[:path], class: "home-product-link" do %>
+                    <span><%= product[:cta] %></span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                  <% end %>
                 <% end %>
               </div>
             </article>
@@ -371,14 +380,14 @@
               </span>
             </a>
 
-            <a href="mailto:contato@sollucion.com.br" class="contact-item contact-card">
+            <a href="mailto:contato@sollucion.com" class="contact-item contact-card">
               <span class="contact-icon">
                 <i class="fa-regular fa-envelope"></i>
               </span>
 
               <span class="contact-copy">
                 <small>E-mail</small>
-                <strong>contato@sollucion.com.br</strong>
+                <strong>contato@sollucion.com</strong>
               </span>
             </a>
 
@@ -434,7 +443,6 @@
 
             <select name="interest">
               <option value="">Selecione uma opção</option>
-              <option>GO ATendi</option>
               <option>Automações com n8n</option>
               <option>Desenvolvimento web</option>
               <option>Integração entre sistemas</option>
@@ -459,20 +467,7 @@
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="sollucion-container">
-      <%= image_tag "logo_main.png", alt: "Sollucion", class: "footer-logo" %>
-
-      <p>© <%= Date.current.year %> Sollucion. Todos os direitos reservados.</p>
-
-      <div class="footer-links">
-        <%= link_to "Produtos", products_path %>
-        <%= link_to "Blog", blog_path %>
-        <%= link_to "Planos", plans_path %>
-        <%= link_to "Contato", contact_path %>
-      </div>
-    </div>
-  </footer>
+  <%= render "shared/footer" %>
 
   <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Fale conosco no WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>

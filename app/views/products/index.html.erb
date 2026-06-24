@@ -88,20 +88,7 @@
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="sollucion-container">
-      <%= image_tag "logo_main.png", alt: "Sollucion", class: "footer-logo" %>
-
-      <p>© <%= Date.current.year %> Sollucion. Todos os direitos reservados.</p>
-
-      <div class="footer-links">
-        <%= link_to "Produtos", products_path %>
-        <%= link_to "Blog", blog_path %>
-        <%= link_to "Planos", plans_path %>
-        <%= link_to "Contato", contact_path %>
-      </div>
-    </div>
-  </footer>
+  <%= render "shared/footer" %>
 
   <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Fale conosco no WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>

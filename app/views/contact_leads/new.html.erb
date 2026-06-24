@@ -1,2 +1,155 @@
-<h1>ContactLeads#new</h1>
-<p>Find me in app/views/contact_leads/new.html.erb</p>
+<%
+  selected_interest = params[:interest].presence
+
+  interest_options = [
+    ["Selecione uma opção", ""],
+    ["Automações com n8n", "Automações com n8n"],
+    ["Desenvolvimento web", "Desenvolvimento web"],
+    ["Integração entre sistemas", "Integração entre sistemas"],
+    ["Infraestrutura digital", "Infraestrutura digital"],
+    ["Outro", "Outro"]
+  ]
+%>
+
+<div class="sollucion-page contact-page">
+  <div class="bg-pattern"></div>
+
+  <div class="particles" aria-hidden="true">
+    <% 22.times do %>
+      <span class="particle"></span>
+    <% end %>
+  </div>
+
+  <div class="glow-lines" aria-hidden="true">
+    <span class="glow-line"></span>
+    <span class="glow-line"></span>
+    <span class="glow-line"></span>
+    <span class="glow-line"></span>
+    <span class="glow-line"></span>
+  </div>
+
+  <main class="internal-page contact-page-main">
+    <section class="contact-page-hero">
+      <div class="sollucion-container">
+        <div class="contact-page-heading">
+          <h1>Vamos conversar sobre o próximo passo do seu negócio?</h1>
+
+          <p>
+            Se você busca melhorar presença digital, automatizar processos,
+            centralizar atendimentos, integrar sistemas ou estruturar uma base
+            tecnológica mais forte, a Sollucion pode ajudar sua empresa a evoluir
+            com mais clareza e eficiência.
+          </p>
+        </div>
+
+        <div class="contact-page-grid">
+          <div class="contact-page-info-panel">
+            <div class="contact-page-info">
+              <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="contact-page-card">
+                <span class="contact-page-icon">
+                  <i class="fa-brands fa-whatsapp"></i>
+                </span>
+
+                <span class="contact-page-card-copy">
+                  <small>WhatsApp</small>
+                  <strong>Fale com a Sollucion</strong>
+                </span>
+              </a>
+
+              <a href="mailto:contato@sollucion.com" class="contact-page-card">
+                <span class="contact-page-icon">
+                  <i class="fa-regular fa-envelope"></i>
+                </span>
+
+                <span class="contact-page-card-copy">
+                  <small>E-mail</small>
+                  <strong>contato@sollucion.com</strong>
+                </span>
+              </a>
+
+              <a href="https://www.instagram.com/sollucion.ltda?igsh=cmg2d3dzamF3eTgz" target="_blank" rel="noopener" class="contact-page-card">
+                <span class="contact-page-icon">
+                  <i class="fa-brands fa-instagram"></i>
+                </span>
+
+                <span class="contact-page-card-copy">
+                  <small>Instagram</small>
+                  <strong>Sollucion</strong>
+                </span>
+              </a>
+
+              <div class="contact-page-card">
+                <span class="contact-page-icon">
+                  <i class="fa-solid fa-location-dot"></i>
+                </span>
+
+                <span class="contact-page-card-copy">
+                  <small>Endereço</small>
+                  <strong>São Paulo - SP</strong>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-page-form-panel" id="contact-form">
+            <% if notice.present? %>
+              <div class="contact-page-notice">
+                <i class="fa-solid fa-circle-check"></i>
+                <span><%= notice %></span>
+              </div>
+            <% end %>
+
+            <%= form_with url: contact_leads_path, method: :post, local: true, class: "contact-page-form" do |form| %>
+              <div class="contact-page-form-grid">
+                <label class="contact-page-field">
+                  <span>Nome</span>
+                  <%= form.text_field :name, placeholder: "Seu nome" %>
+                </label>
+
+                <label class="contact-page-field">
+                  <span>Empresa</span>
+                  <%= form.text_field :company, placeholder: "Nome da empresa" %>
+                </label>
+
+                <label class="contact-page-field">
+                  <span>E-mail</span>
+                  <%= form.email_field :email, placeholder: "voce@empresa.com" %>
+                </label>
+
+                <label class="contact-page-field">
+                  <span>WhatsApp</span>
+                  <%= form.telephone_field :phone, placeholder: "(00) 00000-0000" %>
+                </label>
+              </div>
+
+              <label class="contact-page-field contact-page-field-full">
+                <span>Interesse</span>
+
+                <%= form.select :interest,
+                  options_for_select(interest_options, selected_interest),
+                  {},
+                  class: "contact-page-select"
+                %>
+              </label>
+
+              <label class="contact-page-field contact-page-field-full">
+                <span>Mensagem</span>
+                <%= form.text_area :message, rows: 6, placeholder: "Conte brevemente o que sua empresa precisa..." %>
+              </label>
+
+              <div class="contact-page-actions">
+                <%= form.submit "Enviar mensagem", class: "contact-page-submit" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <%= render "shared/footer" %>
+
+  <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Fale conosco no WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+</div>
