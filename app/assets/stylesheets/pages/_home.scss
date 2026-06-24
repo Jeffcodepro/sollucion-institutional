@@ -1517,7 +1517,7 @@ body {
   }
 
   .mobile-nav a:hover,
-  .mobile-nav-cta {
+  .mobile-nav a.active {
     background: rgba(255, 255, 255, 0.1);
     color: #fff;
   }
@@ -1837,7 +1837,12 @@ body {
   }
 
   .whatsapp-float {
-    display: none;
+    display: grid;
+    right: 18px;
+    bottom: 18px;
+    width: 52px;
+    height: 52px;
+    font-size: 1.55rem;
   }
 }
 

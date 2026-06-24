@@ -38,7 +38,8 @@ class ProductsController < ApplicationController
           "Treinamento básico de uso",
           "Acompanhamento para evolução da operação"
         ],
-        cta: "Conhecer o GO ATendi"
+        cta: "Acessar o GO ATendi",
+        external_url: "https://www.goatendi.com.br"
       },
       {
         slug: "automacoes-integracoes-n8n",
@@ -65,7 +66,8 @@ class ProductsController < ApplicationController
           "Testes e validação do fluxo",
           "Documentação básica da automação"
         ],
-        cta: "Automatizar processos"
+        cta: "Automatizar processos",
+        interest: "Automações com n8n"
       },
       {
         slug: "desenvolvimento-web-sistemas",
@@ -92,7 +94,8 @@ class ProductsController < ApplicationController
           "Publicação em ambiente online",
           "Ajustes finais e orientação de uso"
         ],
-        cta: "Desenvolver projeto web"
+        cta: "Desenvolver projeto web",
+        interest: "Desenvolvimento web"
       }
     ]
   end

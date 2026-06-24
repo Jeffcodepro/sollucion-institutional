@@ -5,6 +5,24 @@
   image_classes << "product-detail-image--go-atendi" if product_slug.include?("go-atendi")
   image_classes << "product-detail-image--n8n" if product_slug.include?("n8n")
   image_classes << "product-detail-image--web" if product_slug.include?("web")
+
+  external_cta = @product[:external_url].present?
+
+  cta_url =
+    if external_cta
+      @product[:external_url]
+    else
+      contact_path(interest: @product[:interest], anchor: "contact-form")
+    end
+
+  cta_html_options = {
+    class: "btn-primary-sollucion"
+  }
+
+  if external_cta
+    cta_html_options[:target] = "_blank"
+    cta_html_options[:rel] = "noopener"
+  end
 %>
 
 <div class="sollucion-page product-detail-page">
@@ -44,7 +62,7 @@
           </p>
 
           <div class="product-detail-actions">
-            <%= link_to contact_path, class: "btn-primary-sollucion" do %>
+            <%= link_to cta_url, cta_html_options do %>
               <span><%= @product[:cta] %></span>
               <i class="fa-solid fa-arrow-right"></i>
             <% end %>
@@ -105,25 +123,15 @@
           </p>
         </div>
 
-        <%= link_to "Solicitar orçamento", contact_path, class: "btn-primary-sollucion" %>
+        <%= link_to cta_url, cta_html_options do %>
+          <span><%= external_cta ? "Acessar produto" : "Solicitar orçamento" %></span>
+          <i class="fa-solid fa-arrow-right"></i>
+        <% end %>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="sollucion-container">
-      <%= image_tag "logo_main.png", alt: "Sollucion", class: "footer-logo" %>
-
-      <p>© <%= Date.current.year %> Sollucion. Todos os direitos reservados.</p>
-
-      <div class="footer-links">
-        <%= link_to "Produtos", products_path %>
-        <%= link_to "Blog", blog_path %>
-        <%= link_to "Planos", plans_path %>
-        <%= link_to "Contato", contact_path %>
-      </div>
-    </div>
-  </footer>
+  <%= render "shared/footer" %>
 
   <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Fale conosco no WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
