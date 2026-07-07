@@ -415,54 +415,73 @@
           </div>
         </div>
 
-        <form action="#" method="post" class="lead-form">
+        <% selected_interest = @contact_lead&.interest.presence %>
+        <% sender_email = ENV.fetch("CONTACT_FORM_FROM_EMAIL", "contato@sollucion.com") %>
+        <% interest_options = [
+          ["Selecione uma opção", ""],
+          ["Automações com n8n", "Automações com n8n"],
+          ["Desenvolvimento web", "Desenvolvimento web"],
+          ["Integração entre sistemas", "Integração entre sistemas"],
+          ["Infraestrutura digital", "Infraestrutura digital"],
+          ["Outro", "Outro"]
+        ] %>
+
+        <%= form_with model: @contact_lead, scope: :contact_lead, url: contact_leads_path, method: :post, local: true, class: "lead-form", id: "contact-form" do |form| %>
+          <%= form.hidden_field :source, value: "home_page" %>
+
+          <% if notice.present? %>
+            <div class="lead-form-notice">
+              <i class="fa-solid fa-circle-check"></i>
+              <span><%= notice %></span>
+            </div>
+          <% end %>
+
+          <% if alert.present? || @contact_lead.errors.any? %>
+            <div class="lead-form-notice lead-form-notice-error">
+              <i class="fa-solid fa-circle-exclamation"></i>
+              <span><%= alert.presence || @contact_lead.errors.full_messages.to_sentence %></span>
+            </div>
+          <% end %>
+
           <div class="lead-grid">
             <label class="field">
               <span>Nome</span>
-              <input type="text" name="name" placeholder="Seu nome">
+              <%= form.text_field :name, placeholder: "Seu nome", required: true %>
             </label>
 
             <label class="field">
-              <span>Empresa</span>
-              <input type="text" name="company" placeholder="Nome da empresa">
+              <span>CPF/CNPJ</span>
+              <%= form.text_field :document, placeholder: "000.000.000-00 ou 00.000.000/0000-00", required: true %>
             </label>
 
             <label class="field">
               <span>E-mail</span>
-              <input type="email" name="email" placeholder="voce@empresa.com">
+              <%= form.email_field :email, placeholder: "voce@seudominio.com", required: true %>
             </label>
 
             <label class="field">
               <span>WhatsApp</span>
-              <input type="tel" name="phone" placeholder="(00) 00000-0000">
+              <%= form.telephone_field :phone, placeholder: "(00) 00000-0000", required: true %>
             </label>
           </div>
 
           <label class="field field-full">
             <span>Interesse</span>
-
-            <select name="interest">
-              <option value="">Selecione uma opção</option>
-              <option>Automações com n8n</option>
-              <option>Desenvolvimento web</option>
-              <option>Integração entre sistemas</option>
-              <option>Infraestrutura digital</option>
-              <option>Outro</option>
-            </select>
+            <%= form.select :interest, options_for_select(interest_options, selected_interest), {}, required: true %>
           </label>
 
           <label class="field field-full">
             <span>Mensagem</span>
-
-            <textarea name="message" rows="5" placeholder="Conte brevemente o que sua empresa precisa..."></textarea>
+            <%= form.text_area :message, rows: 5, placeholder: "Conte brevemente o que sua empresa precisa...", required: true %>
           </label>
 
           <div class="lead-actions">
-            <button type="submit" class="lead-btn lead-btn-email">
-              Enviar mensagem
-            </button>
+            <%= form.submit "Enviar mensagem", class: "lead-btn lead-btn-email" %>
           </div>
-        </form>
+
+          <p class="lead-form-helper">
+          </p>
+        <% end %>
       </div>
     </section>
   </main>

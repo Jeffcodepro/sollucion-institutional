@@ -33,13 +33,33 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  # Store uploaded files on the local file system (see config/storage.yml for options).
+  # Store uploaded files on the local file system.
   config.active_storage.service = :local
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
-
+  # Action Mailer
   config.action_mailer.perform_caching = false
+
+  # Em desenvolvimento, deixe true para aparecer erro se o SMTP falhar.
+  config.action_mailer.raise_delivery_errors = true
+
+  # URL base usada em links de e-mail no ambiente local.
+  config.action_mailer.default_url_options = {
+    host: "localhost",
+    port: 3000
+  }
+
+  # Envio real via SMTP.
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    address: ENV.fetch("SMTP_ADDRESS", "smtppro.zoho.com"),
+    port: ENV.fetch("SMTP_PORT", "587").to_i,
+    domain: ENV.fetch("SMTP_DOMAIN", "sollucion.com"),
+    user_name: ENV.fetch("SMTP_USERNAME"),
+    password: ENV.fetch("SMTP_PASSWORD"),
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -71,6 +91,6 @@ Rails.application.configure do
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 
-  # Raise error when a before_action's only/except options reference missing actions
+  # Raise error when a before_action's only/except options reference missing actions.
   config.action_controller.raise_on_missing_callback_actions = true
 end

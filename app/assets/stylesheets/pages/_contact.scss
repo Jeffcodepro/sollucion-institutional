@@ -150,6 +150,15 @@
   color: var(--sollucion-green);
 }
 
+.contact-page-notice-error {
+  background: rgba(255, 107, 107, 0.12);
+  border-color: rgba(255, 107, 107, 0.24);
+}
+
+.contact-page-notice-error i {
+  color: #ff8a8a;
+}
+
 .contact-page-form {
   width: 100%;
 }
@@ -220,6 +229,17 @@
 .contact-page-actions {
   display: flex;
   margin-top: 18px;
+}
+
+.contact-page-form-helper {
+  margin: 14px 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.contact-page-form-helper strong {
+  color: #fff;
 }
 
 .contact-page-submit {
