@@ -1,0 +1,12 @@
+<h1>Novo contato pelo site</h1>
+
+<p><strong>Enviado pelo sistema com remetente:</strong> <%= @from_email %></p>
+<p><strong>Nome:</strong> <%= @contact_lead.name %></p>
+<p><strong>CPF/CNPJ:</strong> <%= @contact_lead.document.presence || "Nao informado" %></p>
+<p><strong>E-mail:</strong> <%= @contact_lead.email %></p>
+<p><strong>WhatsApp:</strong> <%= @contact_lead.phone.presence || "Nao informado" %></p>
+<p><strong>Interesse:</strong> <%= @contact_lead.interest.presence || "Nao informado" %></p>
+<p><strong>Origem:</strong> <%= @contact_lead.source %></p>
+
+<p><strong>Mensagem:</strong></p>
+<%= simple_format(@contact_lead.message) %>

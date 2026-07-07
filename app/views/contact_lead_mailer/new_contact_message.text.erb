@@ -1,0 +1,12 @@
+Novo contato pelo site
+
+Enviado pelo sistema com remetente: <%= @from_email %>
+Nome: <%= @contact_lead.name %>
+CPF/CNPJ: <%= @contact_lead.document.presence || "Nao informado" %>
+E-mail: <%= @contact_lead.email %>
+WhatsApp: <%= @contact_lead.phone.presence || "Nao informado" %>
+Interesse: <%= @contact_lead.interest.presence || "Nao informado" %>
+Origem: <%= @contact_lead.source %>
+
+Mensagem:
+<%= @contact_lead.message %>

@@ -1,14 +1,28 @@
 <%
-  selected_interest = params[:interest].presence
+  contact_lead = @contact_lead || ContactLead.new
+
+  selected_interest = contact_lead.interest.presence || params[:interest].presence || ""
+
+  sender_email = ENV.fetch(
+    "CONTACT_FORM_FROM_EMAIL",
+    ENV.fetch("MAIL_FROM", "contato@sollucion.com")
+  )
 
   interest_options = [
-    ["Selecione uma opção", ""],
     ["Automações com n8n", "Automações com n8n"],
     ["Desenvolvimento web", "Desenvolvimento web"],
     ["Integração entre sistemas", "Integração entre sistemas"],
     ["Infraestrutura digital", "Infraestrutura digital"],
     ["Outro", "Outro"]
   ]
+
+  interest_select_options =
+    tag.option(
+      "Selecione uma opção",
+      value: "",
+      disabled: true,
+      selected: selected_interest.blank?
+    ) + options_for_select(interest_options, selected_interest)
 %>
 
 <div class="sollucion-page contact-page">
@@ -99,47 +113,60 @@
               </div>
             <% end %>
 
-            <%= form_with url: contact_leads_path, method: :post, local: true, class: "contact-page-form" do |form| %>
+            <% if alert.present? || contact_lead.errors.any? %>
+              <div class="contact-page-notice contact-page-notice-error">
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <span><%= alert.presence || contact_lead.errors.full_messages.to_sentence %></span>
+              </div>
+            <% end %>
+
+            <%= form_with model: contact_lead, scope: :contact_lead, url: contact_leads_path, method: :post, local: true, class: "contact-page-form" do |form| %>
+              <%= form.hidden_field :source, value: "contact_page" %>
+
               <div class="contact-page-form-grid">
                 <label class="contact-page-field">
                   <span>Nome</span>
-                  <%= form.text_field :name, placeholder: "Seu nome" %>
+                  <%= form.text_field :name, placeholder: "Seu nome", required: true %>
                 </label>
 
                 <label class="contact-page-field">
-                  <span>Empresa</span>
-                  <%= form.text_field :company, placeholder: "Nome da empresa" %>
+                  <span>CPF/CNPJ</span>
+                  <%= form.text_field :document, placeholder: "000.000.000-00 ou 00.000.000/0000-00", required: true %>
                 </label>
 
                 <label class="contact-page-field">
                   <span>E-mail</span>
-                  <%= form.email_field :email, placeholder: "voce@empresa.com" %>
+                  <%= form.email_field :email, placeholder: "voce@seudominio.com", required: true %>
                 </label>
 
                 <label class="contact-page-field">
                   <span>WhatsApp</span>
-                  <%= form.telephone_field :phone, placeholder: "(00) 00000-0000" %>
+                  <%= form.telephone_field :phone, placeholder: "(00) 00000-0000", required: true %>
                 </label>
               </div>
 
               <label class="contact-page-field contact-page-field-full">
                 <span>Interesse</span>
 
-                <%= form.select :interest,
-                  options_for_select(interest_options, selected_interest),
-                  {},
-                  class: "contact-page-select"
-                %>
+                <%= select_tag(
+                  "contact_lead[interest]",
+                  interest_select_options,
+                  class: "contact-page-select",
+                  required: true
+                ) %>
               </label>
 
               <label class="contact-page-field contact-page-field-full">
                 <span>Mensagem</span>
-                <%= form.text_area :message, rows: 6, placeholder: "Conte brevemente o que sua empresa precisa..." %>
+                <%= form.text_area :message, rows: 6, placeholder: "Conte brevemente o que sua empresa precisa...", required: true %>
               </label>
 
               <div class="contact-page-actions">
                 <%= form.submit "Enviar mensagem", class: "contact-page-submit" %>
               </div>
+
+              <p class="contact-page-form-helper">
+              </p>
             <% end %>
           </div>
         </div>
