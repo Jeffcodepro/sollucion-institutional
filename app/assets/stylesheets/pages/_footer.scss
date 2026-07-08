@@ -1,0 +1,123 @@
+/* Footer */
+
+.footer {
+  position: relative;
+  z-index: 2;
+  padding: 42px 0 34px;
+  color: #fff;
+  text-align: center;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(201, 77, 154, 0.18), transparent 34%),
+    radial-gradient(circle at 88% 18%, rgba(33, 133, 188, 0.14), transparent 34%),
+    linear-gradient(180deg, rgba(12, 9, 38, 0.96), rgba(7, 6, 24, 0.98));
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer .sollucion-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  text-decoration: none;
+}
+
+.footer-logo {
+  width: 165px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.footer p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.footer-business-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.footer-business-info span {
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-business-info span + span::before {
+  content: "•";
+  margin-right: 14px;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.footer-links a:hover {
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 720px) {
+  .footer {
+    padding: 36px 0 30px;
+  }
+
+  .footer-logo {
+    width: 145px;
+  }
+
+  .footer p {
+    font-size: 0.84rem;
+  }
+
+  .footer-business-info {
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 12px;
+    font-size: 0.82rem;
+  }
+
+  .footer-business-info span + span::before {
+    content: none;
+  }
+
+  .footer-links {
+    gap: 12px 16px;
+    margin-top: 18px;
+  }
+
+  .footer-links a {
+    font-size: 0.84rem;
+  }
+}

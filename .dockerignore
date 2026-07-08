@@ -1,37 +1,54 @@
-# See https://docs.docker.com/engine/reference/builder/#dockerignore-file for more about ignoring files.
+# Git
+.git
+.gitignore
 
-# Ignore git directory.
-/.git/
+# Bundler
+.bundle
+vendor/bundle
 
-# Ignore bundler config.
-/.bundle
+# Environment files
+.env
+.env.*
+!.env.production.example
 
-# Ignore all environment files (except templates).
-/.env*
-!/.env*.erb
+# Rails credentials keys
+config/master.key
+config/credentials/*.key
 
-# Ignore all default key files.
-/config/master.key
-/config/credentials/*.key
-
-# Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
+# Logs and temporary files
+log/*
+tmp/*
 !/log/.keep
 !/tmp/.keep
 
-# Ignore pidfiles, but keep the directory.
-/tmp/pids/*
+# PID files
+tmp/pids/*
 !/tmp/pids/.keep
 
-# Ignore storage (uploaded files in development and any SQLite databases).
-/storage/*
+# Storage
+storage/*
 !/storage/.keep
-/tmp/storage/*
+tmp/storage/*
 !/tmp/storage/.keep
 
-# Ignore assets.
-/node_modules/
-/app/assets/builds/*
+# Assets generated locally
+public/assets
+public/packs
+public/packs-test
+
+# Node / frontend dependencies
+node_modules
+app/assets/builds/*
 !/app/assets/builds/.keep
-/public/assets
+
+# Test / coverage / debug
+coverage
+.byebug_history
+
+# OS/editor files
+.DS_Store
+.vscode
+.idea
+
+# Misc
+README.md
