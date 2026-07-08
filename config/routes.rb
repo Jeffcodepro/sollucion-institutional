@@ -9,4 +9,8 @@ Rails.application.routes.draw do
 
   get "contato", to: "contact_leads#new", as: :contact
   post "contato", to: "contact_leads#create", as: :contact_leads
+
+  get "privacidade", to: "legals#privacy", as: :privacy
+  get "termos", to: "legals#terms", as: :terms
+  get "exclusao-de-dados", to: "legals#data_deletion", as: :data_deletion
 end

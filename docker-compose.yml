@@ -1,0 +1,38 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: sollucion_institutional_db
+    restart: unless-stopped
+    env_file:
+      - .env.production
+    environment:
+      POSTGRES_DB: sollucion_institutional_production
+      POSTGRES_USER: sollucion_user
+    volumes:
+      - sollucion_postgres_data:/var/lib/postgresql/data
+    networks:
+      - sollucion_network
+
+  web:
+    image: sollucion_institutional:latest
+    container_name: sollucion_institutional_web
+    restart: unless-stopped
+    platform: linux/amd64
+    env_file:
+      - .env.production
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    volumes:
+      - sollucion_storage:/rails/storage
+    networks:
+      - sollucion_network
+
+volumes:
+  sollucion_postgres_data:
+  sollucion_storage:
+
+networks:
+  sollucion_network:
+    driver: bridge

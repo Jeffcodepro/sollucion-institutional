@@ -1,13 +1,23 @@
 <footer class="footer">
   <div class="sollucion-container">
-    <%= image_tag "logo_main.png", alt: "Sollucion", class: "footer-logo" %>
+    <%= link_to root_path, class: "footer-brand", aria: { label: "Sollucion" } do %>
+      <%= image_tag "logo_main.png", alt: "Sollucion", class: "footer-logo" %>
+    <% end %>
 
     <p>© <%= Date.current.year %> Sollucion. Todos os direitos reservados.</p>
+
+    <div class="footer-business-info">
+      <span>São Paulo - SP</span>
+      <span>CNPJ: 56.365.822/0001-20</span>
+    </div>
 
     <div class="footer-links">
       <%= link_to "Produtos", products_path %>
       <%= link_to "Blog", blog_path %>
       <%= link_to "Contato", contact_path %>
+      <%= link_to "Privacidade", privacy_path %>
+      <%= link_to "Termos", terms_path %>
+      <%= link_to "Exclusão de dados", data_deletion_path %>
     </div>
   </div>
 </footer>

@@ -1,8 +1,43 @@
-#!/bin/bash -e
+#!/usr/bin/env bash
 
-# If running the rails server then create or migrate existing database
-if [ "${1}" == "./bin/rails" ] && [ "${2}" == "server" ]; then
-  ./bin/rails db:prepare
+set -e
+
+# Remove PID antigo do Rails, caso o container tenha sido encerrado de forma inesperada.
+rm -f /rails/tmp/pids/server.pid
+
+# Aguarda o banco ficar disponível antes de preparar o banco.
+# Isso evita erro quando o container web sobe antes do Postgres.
+if [ "${WAIT_FOR_DATABASE:-true}" = "true" ] && [ -n "${DATABASE_URL}" ]; then
+  ruby -ruri -rsocket -e '
+    uri = URI.parse(ENV.fetch("DATABASE_URL"))
+
+    host = uri.host
+    port = uri.port || 5432
+    timeout = Integer(ENV.fetch("DATABASE_WAIT_TIMEOUT", "60"))
+    started_at = Time.now
+
+    loop do
+      begin
+        TCPSocket.new(host, port).close
+        puts "Database is available at #{host}:#{port}"
+        break
+      rescue
+        if Time.now - started_at > timeout
+          warn "Database was not available after #{timeout} seconds"
+          exit 1
+        end
+
+        puts "Waiting for database at #{host}:#{port}..."
+        sleep 2
+      end
+    end
+  '
 fi
 
-exec "${@}"
+# Prepara o banco automaticamente em produção.
+# db:prepare cria o banco se não existir e roda migrations pendentes.
+if [ "${RUN_DB_PREPARE:-true}" = "true" ]; then
+  bundle exec rails db:prepare
+fi
+
+exec "$@"
