@@ -1,23 +1,103 @@
-<footer class="footer">
+<footer class="site-footer">
   <div class="sollucion-container">
-    <%= link_to root_path, class: "footer-brand", aria: { label: "Sollucion" } do %>
-      <%= image_tag "logo_main.png", alt: "Sollucion", class: "footer-logo" %>
-    <% end %>
+    <div class="site-footer__main">
+      <div class="site-footer__brand">
+        <%= link_to root_path, class: "site-footer__logo-link", aria: { label: "Ir para a página inicial da Sollucion" } do %>
+          <%= image_tag "logo_main.png", alt: "Sollucion", class: "site-footer__logo" %>
+        <% end %>
 
-    <p>© <%= Date.current.year %> Sollucion. Todos os direitos reservados.</p>
+        <p class="site-footer__description">
+          A Sollucion desenvolve produtos digitais, automações, integrações e
+          infraestrutura para empresas que precisam crescer com mais eficiência,
+          organização e presença no digital.
+        </p>
 
-    <div class="footer-business-info">
-      <span>São Paulo - SP</span>
-      <span>CNPJ: 56.365.822/0001-20</span>
+        <div class="site-footer__contact-list">
+          <div class="site-footer__contact-item">
+            <i class="fa-solid fa-building"></i>
+            <span>CNPJ 56.365.822/0001-20</span>
+          </div>
+
+          <div class="site-footer__contact-item">
+            <i class="fa-solid fa-id-card"></i>
+            <span>56.365.822 YURI HERMENEGILDO GOMES</span>
+          </div>
+
+          <div class="site-footer__contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Rua Clemente Argolo - São Paulo, SP 05784090</span>
+          </div>
+
+          <div class="site-footer__contact-item">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>11945350471</span>
+          </div>
+        </div>
+
+        <div class="site-footer__socials">
+          <%= link_to "https://wa.me/5511945350471", target: "_blank", rel: "noopener", class: "site-footer__social-link", aria: { label: "WhatsApp" } do %>
+            <i class="fa-brands fa-whatsapp"></i>
+          <% end %>
+
+          <%= link_to "https://www.instagram.com/sollucion.ltda?igsh=cmg2d3dzamF3eTgz", target: "_blank", rel: "noopener", class: "site-footer__social-link", aria: { label: "Instagram" } do %>
+            <i class="fa-brands fa-instagram"></i>
+          <% end %>
+
+          <%= link_to "mailto:contato@sollucion.com", class: "site-footer__social-link", aria: { label: "E-mail" } do %>
+            <i class="fa-solid fa-envelope"></i>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="site-footer__links">
+        <div class="site-footer__column">
+          <h3>Navegação</h3>
+
+          <ul>
+            <li><%= link_to "Início", root_path %></li>
+            <li><%= link_to "Produtos", products_path %></li>
+            <li><%= link_to "Blog", blog_path %></li>
+            <li><%= link_to "Contato", contact_path %></li>
+          </ul>
+        </div>
+
+        <div class="site-footer__column">
+          <h3>Soluções</h3>
+
+          <ul>
+            <li><%= link_to "GO ATendi", "https://goatendi.com", target: "_blank", rel: "noopener" %></li>
+            <li><%= link_to "Sites e sistemas", products_path %></li>
+            <li><%= link_to "Automações e integrações", products_path %></li>
+            <li><%= link_to "Falar com a Sollucion", contact_path %></li>
+          </ul>
+        </div>
+
+        <div class="site-footer__column">
+          <h3>Conta</h3>
+
+          <ul>
+            <li><%= link_to "Privacidade", privacidade_path %></li>
+            <li><%= link_to "Termos de uso", termos_path %></li>
+            <li><%= link_to "Exclusão de dados", data_deletion_path %></li>
+          </ul>
+        </div>
+      </div>
     </div>
 
-    <div class="footer-links">
-      <%= link_to "Produtos", products_path %>
-      <%= link_to "Blog", blog_path %>
-      <%= link_to "Contato", contact_path %>
-      <%= link_to "Privacidade", privacy_path %>
-      <%= link_to "Termos", terms_path %>
-      <%= link_to "Exclusão de dados", data_deletion_path %>
+    <div class="site-footer__bottom">
+      <div class="site-footer__legal">
+        <span>© <%= Time.current.year %> Sollucion</span>
+        <span>CNPJ 56.365.822/0001-20</span>
+        <span>56.365.822 YURI HERMENEGILDO GOMES</span>
+        <span>Rua Clemente Argolo - São Paulo, SP 05784090</span>
+        <span>11945350471</span>
+      </div>
+
+      <div class="site-footer__policy-links">
+        <%= link_to "Privacidade", privacidade_path %>
+        <%= link_to "Termos de uso", termos_path %>
+        <%= link_to "Exclusão de dados", data_deletion_path %>
+      </div>
     </div>
   </div>
 </footer>

@@ -39,7 +39,7 @@ class ProductsController < ApplicationController
           "Acompanhamento para evolução da operação"
         ],
         cta: "Acessar o GO ATendi",
-        external_url: "https://www.goatendi.com.br"
+        external_url: "https://goatendi.com/"
       },
       {
         slug: "automacoes-integracoes-n8n",
