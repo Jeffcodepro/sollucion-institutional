@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
   <head>
-    <title>SollucionInstitutional</title>
+    <title>Sollucion</title>
+
+    <meta name="description" content="A Sollucion desenvolve soluções digitais para empresas que querem automatizar processos, estruturar presença digital e evoluir com mais eficiência.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#111033">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <%= favicon_link_tag "favicon.ico", sizes: "any" %>
+    <%= favicon_link_tag "favicon-16x16.png", type: "image/png", sizes: "16x16" %>
+    <%= favicon_link_tag "favicon-32x32.png", type: "image/png", sizes: "32x32" %>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="<%= asset_path("apple-touch-icon.png") %>">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
@@ -12,6 +24,7 @@
 
   <body>
     <%= render "shared/navbar" %>
+
     <%= yield %>
   </body>
 </html>
